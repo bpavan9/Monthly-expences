@@ -1,12 +1,13 @@
 from django.urls import path
-from .views import home,sinup,transaction,expence
-from django.contrib.auth.views import LoginView,LogoutView
+from .views import home,BookList,BookDetail,OrderListCreateAPIView
+# from .router import router
 
 urlpatterns = [
-    path('sinup/',sinup),
-    path('home/',home),
-    path('login/',LoginView.as_view(template_name='monthlyexp/login.html')),
-    path('logout/',LogoutView.as_view(template_name='monthlyexp/logout.html')),
-    path('transaction/',transaction),
-    path('expence',expence),
+    path('/',home),
+    path('/BookList/',BookList.as_view()),
+    # path('/BookDetail/',BookDetail.as_view()),
+    path('Test_app/Books/<int:pk>',BookDetail.as_view()),
+    # path('',router()),
+    path('/OrderListCreateAPIView',OrderListCreateAPIView),
+
 ]
